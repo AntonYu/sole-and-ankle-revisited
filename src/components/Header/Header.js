@@ -6,6 +6,8 @@ import Logo from "../Logo";
 import SuperHeader from "../SuperHeader";
 import MobileMenu from "../MobileMenu";
 import Icon from "../Icon";
+import UnstyledButton from "../UnstyledButton";
+import VisuallyHidden from "../VisuallyHidden";
 
 const Header = () => {
     const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -14,9 +16,9 @@ const Header = () => {
         <HeaderWrapper>
             <SuperHeader />
             <MainHeader>
-                <Side>
+                <LogoWrapper>
                     <Logo />
-                </Side>
+                </LogoWrapper>
                 <NavWrapper>
                     <Nav>
                         <NavLink href="/sale">Sale</NavLink>
@@ -27,25 +29,26 @@ const Header = () => {
                         <NavLink href="/collections">Collections</NavLink>
                     </Nav>
                 </NavWrapper>
-                <Side />
                 <MobileMenuWrapper>
-                    <Icon id="shopping-bag" />
-                    <Icon id="search" />
-                    <MobileMenuHamburger onClick={() => setShowMobileMenu(true)}>
+                    <UnstyledButton>
+                        <VisuallyHidden>Open cart</VisuallyHidden>
+                        <Icon id="shopping-bag" />
+                    </UnstyledButton>
+                    <UnstyledButton>
+                        <VisuallyHidden>Open search</VisuallyHidden>
+                        <Icon id="search" />
+                    </UnstyledButton>
+                    <UnstyledButton onClick={() => setShowMobileMenu(true)}>
+                        <VisuallyHidden>Open menu</VisuallyHidden>
                         <Icon id="menu" />
-                    </MobileMenuHamburger>
+                    </UnstyledButton>
                 </MobileMenuWrapper>
+                <Filler />
             </MainHeader>
             <MobileMenu isOpen={showMobileMenu} onDismiss={() => setShowMobileMenu(false)} />
         </HeaderWrapper>
     );
 };
-
-const MobileMenuHamburger = styled.button`
-    border: 0;
-    background: var(--color-white);
-    cursor: pointer;
-`;
 
 const HeaderWrapper = styled.header`
     ${QUERIES[TABLET]} {
@@ -77,6 +80,11 @@ const MainHeader = styled.div`
         justify-content: space-between;
         align-items: center;
     }
+
+    ${QUERIES[PHONE]} {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
 `;
 
 const NavWrapper = styled.div`
@@ -94,8 +102,20 @@ const Nav = styled.nav`
     padding: 16px;
 `;
 
-const Side = styled.div`
+const LogoWrapper = styled.div`
     flex: 1;
+
+    ${QUERIES[TABLET]} {
+        flex: revert;
+    }
+`;
+
+const Filler = styled.div`
+    flex: 1;
+
+    ${QUERIES[TABLET]} {
+        display: none;
+    }
 `;
 
 const NavLink = styled.a`

@@ -27,8 +27,7 @@ const Main = styled.main`
     }
 
     ${QUERIES[PHONE]} {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding: 48px 16px;
     }
 `;
 
