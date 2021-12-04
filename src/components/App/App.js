@@ -22,8 +22,7 @@ const Main = styled.main`
     padding: 64px 32px;
 
     ${QUERIES[TABLET]} {
-        padding-top: 48px;
-        padding-bottom: 48px;
+        padding: 48px 32px;
     }
 
     ${QUERIES[PHONE]} {
