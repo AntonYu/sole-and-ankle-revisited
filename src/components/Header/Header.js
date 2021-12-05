@@ -19,16 +19,14 @@ const Header = () => {
                 <LogoWrapper>
                     <Logo />
                 </LogoWrapper>
-                <NavWrapper>
-                    <Nav>
-                        <NavLink href="/sale">Sale</NavLink>
-                        <NavLink href="/new">New&nbsp;Releases</NavLink>
-                        <NavLink href="/men">Men</NavLink>
-                        <NavLink href="/women">Women</NavLink>
-                        <NavLink href="/kids">Kids</NavLink>
-                        <NavLink href="/collections">Collections</NavLink>
-                    </Nav>
-                </NavWrapper>
+                <DesktopNav>
+                    <NavLink href="/sale">Sale</NavLink>
+                    <NavLink href="/new">New&nbsp;Releases</NavLink>
+                    <NavLink href="/men">Men</NavLink>
+                    <NavLink href="/women">Women</NavLink>
+                    <NavLink href="/kids">Kids</NavLink>
+                    <NavLink href="/collections">Collections</NavLink>
+                </DesktopNav>
                 <MobileMenuWrapper>
                     <UnstyledButton>
                         <VisuallyHidden>Open cart</VisuallyHidden>
@@ -73,8 +71,8 @@ const MainHeader = styled.div`
     display: flex;
     align-items: baseline;
     padding: 18px 32px;
-    height: 72px;
     border-bottom: 1px solid var(--color-gray-300);
+    overflow: auto;
 
     ${QUERIES[TABLET]} {
         justify-content: space-between;
@@ -87,19 +85,14 @@ const MainHeader = styled.div`
     }
 `;
 
-const NavWrapper = styled.div`
-    overflow-y: auto;
-    margin: -16px 32px;
+const DesktopNav = styled.div`
+    display: flex;
+    gap: clamp(1rem, 5.1vw - 1rem, 3rem);
+    margin: 0 48px;
 
     ${QUERIES[TABLET]} {
         display: none;
     }
-`;
-
-const Nav = styled.nav`
-    display: flex;
-    gap: clamp(1rem, 5.1vw - 1rem, 3rem);
-    padding: 16px;
 `;
 
 const LogoWrapper = styled.div`
